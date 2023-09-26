@@ -1,6 +1,6 @@
-import { View, TextInput, Pressable, Text, Picker } from 'react-native';
+import { View, TextInput, Button, Pressable, Text } from 'react-native';
 import { useState } from 'react';
-//import DateTimePicker from '@react-native-community/datetimepicker';
+import styles from "./ProfileForm.style"
 
 const ProfileForm = ({ onSubmit }) => {
 
@@ -9,66 +9,88 @@ const ProfileForm = ({ onSubmit }) => {
   const [lastName2, setLastName2] = useState('');
   const [nationality, setNationality] = useState('');
   const [birthState, setBirthState] = useState('');
-  const [birthDate, setBirthDate] = useState(null);
+  const [gender, setGender] = useState('');
+  const [birthDate, setBirthDate] = useState({
+    day: '',
+    month: '',
+    year: '' 
+  });
 
   const handleSubmit = () => {
-    const formData = {
-      name,
-      lastName1,
-      lastName2,
-      nationality,
-      birthState,
-      birthDate,
-    };
-    onSubmit(formData);
+
   };
 
   return (
-    <View>
-
+    <View style={styles.container}>
       <TextInput
+        style={styles.input}
         placeholder="Nombre(s)"
         value={name}
         onChangeText={setName}
       />
 
       <TextInput
-        placeholder="Primer apellido"
+        style={styles.input}  
+        placeholder="Apellido paterno"
         value={lastName1}
         onChangeText={setLastName1} 
       />
 
       <TextInput
-        placeholder="Segundo apellido"
+        style={styles.input}
+        placeholder="Apellido materno"
         value={lastName2}
         onChangeText={setLastName2}
       />
 
       <TextInput
+        style={styles.input}
         placeholder="Nacionalidad"
         value={nationality}
         onChangeText={setNationality} 
       />
 
       <TextInput
+        style={styles.input}
         placeholder="Estado de nacimiento"
         value={birthState}
         onChangeText={setBirthState}
       />
-       {/* 
-      <Picker
-        selectedValue={gender}
-        onValueChange={(itemValue) => setGender(itemValue)}  
-      >
-        <Picker.Item label="Masculino" value="male" />
-        <Picker.Item label="Femenino" value="female" />
-      </Picker>
 
-      <DatePicker
-        date={birthDate}
-        onDateChange={setBirthDate}
+      <TextInput
+        style={styles.input}
+        placeholder="Género"
+        value={gender}
+        onChangeText={setGender}
       />
-      */}
+
+      <TextInput
+        style={styles.input}
+        placeholder="Día de nacimiento (dd)"
+        keyboardType="numeric"
+        value={birthDate.day}
+        onChangeText={day => setBirthDate({...birthDate, day})}
+      />
+
+      <TextInput
+        style={styles.input}
+        placeholder="Mes de nacimiento (mm)"
+        keyboardType="numeric" 
+        value={birthDate.month}
+        onChangeText={month => setBirthDate({...birthDate, month})}
+      />    
+
+      <TextInput
+        style={styles.input}
+        placeholder="Año de nacimiento (aaaa)"
+        keyboardType="numeric"
+        value={birthDate.year}
+        onChangeText={year => setBirthDate({...birthDate, year})}
+      />
+
+      <Pressable style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Guardar Perfil</Text>
+      </Pressable>
 
     </View>
   );
