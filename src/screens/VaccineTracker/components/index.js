@@ -1,4 +1,3 @@
-import ProfileForm from "./ProfileForm/ProfileForm"
-import AddProfile from "./AddProfile/AddProfile"
+import AddProfile from "./AddProfile/AddProfile";
 
-export { ProfileForm, AddProfile }
+export { AddProfile };

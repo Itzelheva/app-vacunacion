@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { VaccineTracker } from "../../screens";
-
+import { VaccineTracker, ProfileForm } from "../../screens";
 
 const Stack = createNativeStackNavigator();
 function VaccineTrackerNavigator() {
@@ -12,6 +11,7 @@ function VaccineTrackerNavigator() {
       })}
     >
       <Stack.Screen name="VaccineTracker" component={VaccineTracker} />
+      <Stack.Screen name="ProfileForm" component={ProfileForm} />
     </Stack.Navigator>
   );
 }

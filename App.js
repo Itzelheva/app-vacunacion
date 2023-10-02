@@ -4,7 +4,7 @@ import { useFonts } from "expo-font"
 import fonts from "./src/global/fonts"
 import { Provider } from "react-redux";
 import { store } from "./src/store";
-
+import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
@@ -14,10 +14,20 @@ export default function App() {
   }
 
   return (
+    <SafeAreaView style={styles.container} >
     <Provider store={store} >
-      <NavigationContainer>
+     <NavigationContainer>
         <BottomTabNavigator />
-      </NavigationContainer>
+    </NavigationContainer>
     </Provider>
+    </SafeAreaView>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Platform.OS === "android" ? StatusBar.currentHeight: 0
+  },
+})
+
