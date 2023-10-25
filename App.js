@@ -5,6 +5,7 @@ import fonts from "./src/global/fonts"
 import { Provider } from "react-redux";
 import { store } from "./src/store";
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
+import { SignUp } from "./src/screens"
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
