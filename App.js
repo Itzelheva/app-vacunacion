@@ -1,11 +1,10 @@
 import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from "./src/navigation/BottomTabNavigator/BottomTabNavigator";
+import MainNavigator from "./src/navigation/MainNavigator/MainNavigator";
 import { useFonts } from "expo-font"
 import fonts from "./src/global/fonts"
 import { Provider } from "react-redux";
 import { store } from "./src/store";
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
-import { SignUp } from "./src/screens"
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
@@ -18,7 +17,7 @@ export default function App() {
     <SafeAreaView style={styles.container} >
     <Provider store={store} >
      <NavigationContainer>
-        <BottomTabNavigator />
+        <MainNavigator />
     </NavigationContainer>
     </Provider>
     </SafeAreaView>
