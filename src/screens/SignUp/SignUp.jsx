@@ -7,22 +7,28 @@ import { useDispatch } from 'react-redux'
 import { setUser } from '../../features/auth/authSlice'
 
 const SignUp = ({ navigation }) => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPass, setConfirmPass] = useState("")
-  const [triggerSignUp, result] = useSignUpMutation()
-  const dispatch = useDispatch
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPass, setConfirmPass] = useState('')
+  const [triggerSignUp] = useSignUpMutation()
+  const dispatch = useDispatch()
 
   const onSubmit = () => {
-    console.log(email, password, confirmPass);
+    console.log('Sign up button');
     triggerSignUp({
       email,
       password,
     })
-    console.log(result)
-    if(result.isSuccess) {
-      dispatch(setUser (result))
-    }
+      .unwrap()
+      .then((result) => {
+        console.log('Resultado del registro:', result);
+        if (result && result.email) {
+          dispatch(setUser(result));
+        } else {
+          console.log('Respuesta de registro no válida:', result);
+        }
+      })
+      .catch((err) => console.log('Error en el registro:', err));
   }
 
   return (
@@ -48,9 +54,12 @@ const SignUp = ({ navigation }) => {
           <Text style={styles.textButtons} >Sign up</Text>
         </Pressable>
         <Pressable>
-        <Text>No have an account?</Text>
+        <Text>Already have an account?</Text>
         </Pressable>
-        <Pressable style={styles.signUpButton} onPress={() => navigation.navigate("Login")} >
+        <Pressable 
+          style={styles.signUpButton} 
+          onPress={() => navigation.navigate("Login")} 
+        >
           <Text style={styles.textButtons} >Login</Text>
         </Pressable>
       </View>

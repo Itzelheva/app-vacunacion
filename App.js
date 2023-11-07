@@ -4,7 +4,12 @@ import { useFonts } from "expo-font"
 import fonts from "./src/global/fonts"
 import { Provider } from "react-redux";
 import { store } from "./src/store";
+import { init } from './src/db'
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
+
+init()
+  .then(() => console.log('DB initialized'))
+  .catch(err => console.log('DB failed', err.message))
 
 export default function App() {
   const [fontsLoaded] = useFonts(fonts)
