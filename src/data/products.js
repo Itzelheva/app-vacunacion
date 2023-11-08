@@ -11,7 +11,7 @@ export default [
     id: 2,
     title: "Hepatitis B",
     description: "La vacuna previene la hepatitis B y sus complicaciones, todas las vacunas que hay en el mercado tienen antígeno proteico HBsAg (Antígeno de superficie de hepatitis B) purificado.",
-    doses: 3,
+    doses: 1,
     idealDoseDates: [0,2,6],
     category: "Vacunación en niños de 0 a 9 años",
   },
@@ -76,7 +76,7 @@ export default [
     title: "Varicela",
     description: "La vacunación contra varicela es la medida de prevención primaria fundamental para prevenir la enfermedad y sus complicaciones como infecciones de la piel, neumonía, choque o la muerte por esta enfermedad. Además de la protección individual, las personas vacunadas evitan la transmisión de está enfermedad y por lo tanto que otras personas se enfermen, sobre todo los que tienen mas riesgos de complicaciones por varicela y no se pueden vacunar como lactantes, embarazadas, personas con inmunosupresión u otros.",
     doses: 2,
-    idealDoseDates: [12,18],
+    idealDoseDates: [12,15],
     category: "Vacunación en niños de 0 a 9 años",
   },
   {
